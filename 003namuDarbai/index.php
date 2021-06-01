@@ -109,8 +109,23 @@ echo '<br><br>';
 
 echo ++$uzduotis; 
 echo '<br><br>';
- $eng = "Don't Be a Menace to South Central While Drinking Your Juice in the Hood";
- $ltu = 'Tik nereikia gąsdinti Pietų Centro, geriant sultis pas save kvartale';
+
+
+$string2 = 'Tik nereikia gąsdinti Pietų Centro, geriant sultis pas save kvartale.';
+ 
+echo $string2;
+echo '<br>'; echo '<br>';
+ 
+$words = explode(' ', $string2);
+ 
+$counter = 0;
+for($i = 0; $i < count($words); $i++) {
+    if (mb_strlen($words[$i]) <= 5){
+        $counter++;
+    }
+}
+ 
+echo "Žodžių, trumpenių arba lygių nei 5 raidės skaičius: $counter";
 
 
 // 10. Parašyti kodą, kuris generuotų atsitiktinį stringą iš lotyniškų mažųjų raidžių.
@@ -131,4 +146,6 @@ function getRandomString($n) {
     return $randomString;
 }
   
-echo getRandomString($n);
+// echo getRandomString($n);
+// echo '<br><br>';
+// echo chr(rand(97, 122)) . chr(rand(97, 122)) . chr(rand(97, 122));
