@@ -56,7 +56,16 @@ echo "Max: $max => ";
 echo "IndexM: $indexM ";
 // nesigauna priskyrimo indexD
 echo '<br>';
-echo '-----------------2-----b-----';
+echo '-----------------2-----c-----';
 echo '<br>';
 // c)	Suskaičiuokite kiekvieno antro lygio masyvų su vienodais indeksais sumas 
 // (t.y. suma reikšmių turinčių indeksą 0, 1 ir t.t.)
+$vienodiKey = '';
+foreach ($masyvasDidysis as $indexD => $valueD){
+    foreach ($valueD as $indexM => $valueM) {
+        $masyvasDidysis[$indexD][$indexM] = $vienodiKey;
+
+
+
+
+
