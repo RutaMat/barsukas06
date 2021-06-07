@@ -114,6 +114,14 @@ echo '<br>';
 echo '-----------------2---i--------';
 echo '<br>';
 
+foreach($masyvas as $index => $value){
+    if($index % 2 != 0){
+        unset($masyvas[$index]);
+       
+    }
+}
+
+print_r($masyvas);
 
 
         
