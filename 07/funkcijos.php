@@ -25,18 +25,18 @@ $suma = vardas(8, 25, 88);
 echo $suma;
 //argumentu gali buti daugiau nei parametr, bus defaultinis
 //jeigu argumentu maziau nei parametru blogai
-$suma = vardas();
-echo $suma;
+// $suma = vardas();
+// echo $suma;
 
-$suma = vardas(56, 25);
-echo $suma;
+// $suma = vardas(56, 25);
+// echo $suma;
 
 
 
 function calc($action, ...$arg)
 {// galima kviesti ir be parametru
 // kai reiksmiu calc daugiau jis tampa masyvu
-...arg paskutinis ir vienintelis
+//...arg paskutinis ir vienintelis
     _d($arg);
     $answ = 0;
     foreach ($arg as $val) {
