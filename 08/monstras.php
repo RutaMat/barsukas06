@@ -3,7 +3,7 @@
 
 function doArr()
 {
-    static $c = 20;
+     $c = 20;
     if(--$c < 0) {
         return rand(1, 11);
     }

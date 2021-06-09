@@ -5,7 +5,7 @@
 //gaunasi iki galo neusbaigem f-jos (i 01:38:30)
 //callback 3 budai 01:45:00
 //4tas arrow functional1:53:00. Dazanai nen
-<?php
+
 
 
 function recursive($num) {

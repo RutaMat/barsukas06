@@ -7,7 +7,7 @@
 echo '<br>';
 echo '-----------------5-------';
 echo '<br>';
-$masyvas = [];
+
 //$count = 0;
 $masyvas = [];
 do {
