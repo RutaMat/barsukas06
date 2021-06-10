@@ -49,28 +49,4 @@ echo '<br>';
 echo '-----------4-------------';
 echo '<br>';
 
-// 4.	Parašykite funkciją, kuri skaičiuotų, iš kiek sveikų skaičių jos argumentas
-//  dalijasi be liekanos (išskyrus vienetą ir 
-// patį save) Argumentą užrašykite taip, kad būtų galima įvesti tik sveiką skaičių;
 
-
-function daLyba()
-{ 
-    $c = 20;
-
-    if(--$c > 0 ) {
-        return range(2, $c);
-    }
-    $valueNew = 0;
-    foreach (range(2, $c) as range(2, $c)) {
-        $masyvas = [];
-        if ($value % --$value == 0) {
-          $value = $valueNew;
-          $valueNew++;
-          
-        }
-    }
-}
-
-_d( daLyba() );
-_d($valueNew);

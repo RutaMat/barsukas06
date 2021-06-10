@@ -6,6 +6,9 @@
 //  tokią pat salygą kaip ir pirmasis masyvas.
 //  Viską pakartokite atsitiktinį nuo 10 iki 30  kiekį kartų. Paskutinio masyvo paskutinis elementas yra lygus 0;
 
+echo '<br>';
+echo '----------7--------------';
+echo '<br>';
 $arr = genegenerator(rand(10,30));
 // print_r($arr);
 
@@ -25,10 +28,13 @@ function genegenerator( $times)
     }
     return $arr;
 }
-// _dc($arr);
+ _dc($arr);
 
 // 8.	Suskaičiuokite septinto uždavinio elementų, kurie nėra masyvai, sumą. 
 // Skaičiuoti reikia visuose masyvuose ir submasyvuose.
+echo '<br>';
+echo '-----------8-------------';
+echo '<br>';
 
 // _dc($arr);
 $result = calc($arr);
@@ -47,12 +53,20 @@ function calc($arr)
 
     return $sum;
 }
-var_dump( isPrime(6));
+_d(calc($arr));
 
+
+
+// 9.	Sugeneruokite masyvą iš trijų elementų, kurie yra atsitiktiniai skaičiai
+//  nuo 1 iki 33. Jeigu tarp trijų paskutinių elementų yra nors vienas
+//   ne pirminis skaičius, prie masyvo pridėkite dar vieną elementą- 
+//   atsitiktinį skaičių nuo 1 iki 33. Vėl patikrinkite pradinę sąlygą ir 
+//   jeigu reikia pridėkite dar vieną elementą.
+//  Kartokite, kol sąlyga nereikalaus pridėti elemento. 
+echo '<br>';
+echo '-----------9-------------';
+echo '<br>';
 function isPrime($n){for($i=$n;--$i&&$n%$i;);return$i==1;}
-
-
-
 $masyvas = [];
 
 foreach(range(1, 3) as $_) {
