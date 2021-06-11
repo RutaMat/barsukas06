@@ -18,13 +18,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voverės ir Zuikiai</title>//1
+    <title>Voverės ir Zuikiai</title>
 </head>
 <body>
 <h1>Voverės ir Zuikiai</h1>
 <h2>
 <a href="http://localhost/barsukas/10/">Namai</a>
-<a href="?rodyti=vovere&puslapis=1">Voverės 1</a> //5
+<a href="?rodyti=vovere&puslapis=1">Voverės 1</a> 
 <a href="?rodyti=vovere&puslapis=2">Voverės 2</a>
 <a href="?rodyti=zuikis&puslapis=1">Zuikiai 1</a>
 <a href="?rodyti=zuikis&puslapis=2">Zuikiai 2</a>
@@ -79,4 +79,3 @@ else {
 </html>
 
 
-<?php
