@@ -1,18 +1,31 @@
 <?php
+session_start();
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    //jeigu neturim rezultato tai rodoma forma,
+    // jeigu turim tada rodoma rezultatas
+    if (!isset($_SESSION['results'])) {   // [5, 1]  [sugeneruota, pazymeta]
+    // 1 scenarijus Formos Rodymas GET
     $letters = range('A', 'J');
     $count = rand(3, 10);
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $color = 'white';
-        $form = false;
-        //false reiskias nerodau formos
+    $color = 'black';
+    $form = true;
     }
     else {
-        $color = 'black';
-        $form = true;
+    // 2 scenarijus Rezultatų Rodymas GET
+    $color = 'white';
+    $form = false;
+    $sugeneruota = $_SESSION['results'][0];
+    $pazymeta = $_SESSION['results'][1];
+    unset($_SESSION['results']);
     }
-
-    // _d($letters);
-    // _d($_POST);   // $_POST['let'] == ['D', 'F']
+}
+else {
+    // 3 scenarijus Checkboksų skaičiavimas POST
+    $_SESSION['results'][0] = $_POST['count'];
+    $_SESSION['results'][1] = count($_POST['let'] ?? []);
+    header('Location: http://localhost/barsukas06/WEB%20mechanika/12/10_10ndSesijoje.php');
+    die;
+}
 ?>
 
 <!DOCTYPE html>
@@ -24,9 +37,9 @@
     <title>7 - 9</title>
 </head>
 <body style="background-color: <?= $color ?>">
-    <!-- nuoroda i ta pati puslapi. geto metodu sugrazins i ta pat psl -->
+
     <a href="">BACK</a><br><br>
-    <!-- jeigu rodom forma tai ja  -->
+
     <?php if($form) : ?>
         <form action="" method="post" style="background-color: gray;padding: 10px;">
         <input type="hidden" name="count" value="<?= $count ?>">
@@ -38,11 +51,8 @@
         <button type="submit">CAL</button>
         </form>
     <?php else : ?>
-        <br>Sugeneruota: <?= $_POST['count'] ?>
-        <br>Pažymėta: <?= count($_POST['let'] ?? []) ?>
+        <br>Sugeneruota: <?= $sugeneruota ?>
+        <br>Pažymėta: <?= $pazymeta ?>
     <?php endif ?>
-
-
-
 </body>
 </html>
