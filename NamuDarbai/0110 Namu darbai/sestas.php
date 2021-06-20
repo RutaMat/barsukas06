@@ -6,6 +6,12 @@ kai paspaustas mygtukas iš GET formos ir geltonai- kai iš POST. -->
 <?php
 
 _d($_SERVER['REQUEST_METHOD']);
+    if($_SERVER['REQUEST_METHOD'] == 'GET') {
+        echo '<body style="background-color: green">';
+    } elseif($_SERVER['REQUEST_METHOD'] == 'POST') {
+        echo '<body style="background-color: yellow">';
+    }
+
 ?>
 
 
@@ -17,13 +23,13 @@ _d($_SERVER['REQUEST_METHOD']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body style="background-color:<?=$color?>" >
-    <form action="" method="get">
-    <button type="submit"> MYGIA </button>
+<body style="color: white>" >
+    <form action="" method="GET">
+    <button type="submit"> GET </button>
     </form>
 
-    <form action="" method="post">
-    <button type="submit">Naujas MYGIA</button>
+    <form action="" method="POST">
+    <button type="submit">POST</button>
     </form>
 </body>
 </html>

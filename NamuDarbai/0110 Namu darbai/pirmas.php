@@ -14,8 +14,6 @@ $color = "black";
 if(isset($_GET['color'])){
     $color = "red";
 }
-
-
 ?>
 
  <!DOCTYPE html>
@@ -38,8 +36,5 @@ if(isset($_GET['color'])){
 <button type="submit">sub</button>
 </form> -->
 
-
-
-</form> -->
  </body>
  </html>
