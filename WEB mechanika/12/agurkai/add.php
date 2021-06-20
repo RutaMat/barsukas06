@@ -11,7 +11,7 @@
     <?php $id = $_GET['id'] ?? 0 ?>
     <form action="?action=add&id=<?= $id ?>" method="post">
         <input type="text" name="amount">
-        <button>Pridėti Pridėti agurkų</button>
+        <button>Pridėti Pridėti agurkų į dėžę <?= $id ?></button>
     </form>
 </body>
 </html>

@@ -1,8 +1,35 @@
 <?php
 session_start();
-function redirect() {
+function redirect() 
+{
     header('Location: http://localhost/barsukas06/WEB%20mechanika/12/agurkai/');
     die;
+}
+function redirectToAction($action, $id = 0) 
+{
+    if ($id) {
+        header('Location: http://localhost/barsukas06/WEB%20mechanika/12/agurkai/?action='.$action.'&id='.$id);
+    }
+    else {
+        header('Location: http://localhost/barsukas06/WEB%20mechanika/12/agurkai/?action='.$action);
+    }
+    die;
+}
+// redirectBack()  //
+
+function getMessage()
+{
+    if (!isset($_SESSION['msg'])) {
+        return false;
+    }
+    $msg = $_SESSION['msg'];
+    unset($_SESSION['msg']);
+    return $msg;
+}
+
+function setMessage(string $msg)
+{
+    $_SESSION['msg'] = $msg;
 }
 
 // box ['id' => 25, 'amount' => 258]
@@ -12,6 +39,7 @@ if (!file_exists(__DIR__.'/boxes.json')) {
 }
 $boxes = json_decode( file_get_contents(__DIR__.'/boxes.json'), 1);
 //
+
 
 //Routerio Prosenelis
 

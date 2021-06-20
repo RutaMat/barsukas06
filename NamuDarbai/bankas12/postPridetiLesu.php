@@ -6,11 +6,9 @@ $id = $_GET['id'] ?? 0;
 // die;
 // print_r ($sarasas);  //ar mato suma
 // die;
-$saskaita = ['id' => rand(1, 100), 'suma' => 0, 'vardas' => $_POST['vardas'], 'pavarde' => $_POST['pavarde'], 'asmensKodas' => $_POST['asmensKodas'],  'saskaitosNr' => $_POST['saskaitosNr'], 'likutis' =>$_POST['likutis'] ]; //nera unikalumo
-$sarasas[] = $saskaita;
-file_put_contents(__DIR__.'/sarasai.json', json_encode($sarasas));
 
-redirect();
+
+
 foreach ($sarasas as &$saskaita) {
     if ($saskaita['id'] == $id) {
         

@@ -10,22 +10,24 @@
 </head>
 <body>
 <h1> Sąskaitos papildymas </h1>
-<h2></h2>
+
 <!-- <?php include __DIR__ . '/menu.php' ?>  -->
 
-<!-- <?php $id = $_GET['id'] ?? 0 ?> nukreipimas lesu bei formoje = $id taip pat -->
+<?php $id = $_GET['id'] ?? 0 ?> 
 
 <form action="?action=pridetiLesu&id=<?= $id ?>" method="post">
-
-  
-
+<?php foreach ($sarasas as $saskaita) { 
+    if ($saskaita['id'] == $id) {
+    echo $saskaita['vardas'] . " " . $saskaita['pavarde'] . ". Sąskaitos likutis: " . $saskaita['suma'] . " Eur "; } 
+} ?>
     
     <input type="text" name="suma">
     <button> Papildyti sąskaitą </button>
 
 
 </form>
-    
+<br><br>
+    <a href="./">Grįžti į pradžią</a>   
 </body>
 </html>
 

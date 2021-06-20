@@ -8,7 +8,13 @@
 </head>
 <body>
     <?php include __DIR__ . '/menu.php' ?>
+    <?php include __DIR__ . '/msg.php' ?>
     <ul>
+    <?php
+        usort($boxes, function($a, $b) {
+            return $b['amount'] <=> $a['amount'];
+        })
+    ?>
     <?php foreach($boxes as $box) : ?>
         <li>
             Dėžė Nr. <?= $box['id'] ?> Viso agukų: <?= $box['amount'] ?>
@@ -18,6 +24,7 @@
             <button type="submit">Išmesti dėžę</button>
             </form>
         </li>
+        
     <?php endforeach ?>
     </ul>
 </body>

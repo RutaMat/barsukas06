@@ -7,14 +7,19 @@
     <title>Išėmimas iš sąskaitos</title>
 </head>
 <body>
-    <?php include __DIR__ . '/menu.php' ?>
+    <!-- <?php include __DIR__ . '/menu.php' ?> -->
     <?php $id = $_GET['id'] ?? 0 ?>
     <form action="?action=nuskaiciuotiLesas&id=<?= $id ?>" method="post">
+    <?php foreach ($sarasas as $saskaita) { 
+    if ($saskaita['id'] == $id) {
+        echo $saskaita['vardas'] . " " . $saskaita['pavarde'] . ". Sąskaitos likutis: " . $saskaita['suma'] . " Eur "; } 
+} ?>
         <input type="text" name="suma">
         <button>Išimti iš sąskaitos</button>
         
 
     </form>
-    <!-- <a href="./">Grįžti į pradžią</a> -->
+    <br><br>
+    <a href="./">Grįžti į pradžią</a>
 </body>
 </html>

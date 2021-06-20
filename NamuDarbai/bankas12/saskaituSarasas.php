@@ -14,9 +14,16 @@
 </head>
 <body>
     <h1>Sąskaitų sąrašas</h1>
-    <?php include __DIR__ . '/menu.php' ?>
+    <?php include __DIR__ . '/menu.php' ?>          
+
+    <?php usort($sarasas, function ($a, $b) {
+             return $a['pavarde'] <=> $b['pavarde'];
+        });?>
+
     <ul>
+    
         <?php foreach($sarasas as $saskaita){ ?>
+        
             <li>Vardas <?= $saskaita['vardas'] ?></li>
             <li>Pavarde <?= $saskaita['pavarde'] ?></li>
             <li>Asmens kodas <?= $saskaita['asmensKodas'] ?></li>
@@ -27,10 +34,12 @@
             <form action="?action=trynimas&id=<?= $saskaita['id'] ?>" method="post"> 
             
             <button type="submit">Ištrinti sąskaitą</button>
+
             </form>
-        <?php } ?>            
+        <?php } ?>  
+           
 
     </ul>
-    
+
 </body>
 </html>
