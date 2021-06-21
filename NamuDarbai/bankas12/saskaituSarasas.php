@@ -14,7 +14,8 @@
 </head>
 <body>
     <h1>Sąskaitų sąrašas</h1>
-    <?php include __DIR__ . '/menu.php' ?>          
+    <?php include __DIR__ . '/menu.php' ?> 
+    <?php include __DIR__ . '/msg.php' ?>         
 
     <?php usort($sarasas, function ($a, $b) {
              return $a['pavarde'] <=> $b['pavarde'];

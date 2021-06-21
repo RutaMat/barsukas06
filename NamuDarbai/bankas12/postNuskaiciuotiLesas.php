@@ -8,14 +8,15 @@ $id = $_GET['id'] ?? 0;
 // die;
 foreach ($sarasas as &$saskaita) {
     if ($saskaita['id'] == $id) {
-        // Validation
-        // if ($saskaita['suma'] < (int) $_POST['suma']) {
-        //     // setMessage('Tiek lėšų nėra.');
-        //     redirectToAction('nuskaiciuotiLesas', $id);
-        // }
+        
+        // Validation. Jeigu sask yra maziau agurku negu norime paimti
+        if ($saskaita['suma'] < (int) $_POST['suma']) {
+            setMessage('Trūksta lėšų.');
+            redirectToAction('nuskaiciuotiLesas', $id); //griztam i nuskaiciuoti su tuo pat id kuriuo atejom
+        }
         $saskaita['suma']-= (int) $_POST['suma'];
         file_put_contents(__DIR__.'/sarasai.json', json_encode($sarasas));
-        // setMessage($_POST['suma'].' Pinigai išimti');
+        setMessage ('Išimta iš sąskaitos ' .$_POST['suma']. ' Eur') ;
         redirect();
     }
 }

@@ -7,7 +7,7 @@
     <title>Išėmimas iš sąskaitos</title>
 </head>
 <body>
-    <!-- <?php include __DIR__ . '/menu.php' ?> -->
+     <?php include __DIR__ . '/msg.php' ?>
     <?php $id = $_GET['id'] ?? 0 ?>
     <form action="?action=nuskaiciuotiLesas&id=<?= $id ?>" method="post">
     <?php foreach ($sarasas as $saskaita) { 

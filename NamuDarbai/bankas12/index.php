@@ -9,6 +9,36 @@ function redirect() {
     die;
 }
 
+function redirectToAction($action, $id = 0) { //default 0
+    if ($id) {
+        header('Location:http://localhost/barsukas06/NamuDarbai/bankas12/?action='.$action.'&id='.$id);
+        
+    } else {
+        header('Location:http://localhost/barsukas06/NamuDarbai/bankas12/?action='.$action);
+    } 
+    die;
+
+}
+ // kitu atveju pasiimam msg.
+// pasiimam msg(tarpini) kad galetumem atvaizduoti ir
+// istrinam kad eiti prie kitu rezultatu, kad jo vis nerodytu naujose reiksmese
+function getMessage() {
+    
+    if(!isset($_SESSION['msg'])) {
+        return false;
+    }
+    $msg = $_SESSION['msg']; 
+   
+    unset($_SESSION['msg']);
+    return $msg;
+};
+
+function setMessage(string $msg) {
+    $_SESSION['msg'] = $msg;
+}
+
+
+
 if (!file_exists(__DIR__.'/sarasai.json')) {
     file_put_contents(__DIR__.'/sarasai.json', json_encode([]));
     // pirma kart ateina, neranda masyvo, sukuriamas failas ir idedamas i tuscia masyva. pirmo k. prasukimas 

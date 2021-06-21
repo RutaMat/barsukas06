@@ -14,7 +14,7 @@ foreach ($sarasas as &$saskaita) {
         
         $saskaita['suma']+= (int) $_POST['suma']; // ateina is formos Post
         file_put_contents(__DIR__.'/sarasai.json', json_encode($sarasas));
-        // setMessage($_POST['suma'].' Sąskaita papildyta');
+        setMessage(' Sąskaita papildyta ' .$_POST['suma']. ' Eur!');
         redirect();
     }
 }

@@ -5,7 +5,7 @@ foreach ($sarasas as $index => $saskaita) {
            if ( $saskaita ['suma'] == 0) { 
            unset($sarasas[$index]);
            file_put_contents(__DIR__.'/sarasai.json', json_encode($sarasas));
-           // setMessage('Sąskaita panaikinta');
+           setMessage('Sąskaita panaikinta!');
            redirect();
            } else echo "Sąskaitoje yra likutis, todėl negalima anuliuoti sąskaitos";
         }
