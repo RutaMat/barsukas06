@@ -20,3 +20,4 @@ echo '<pre>';
 echo $bebras1->name;
 
 $bebras1->sayHello();
+$bebras2->sayHello();

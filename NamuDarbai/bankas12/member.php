@@ -1,7 +1,10 @@
 <?php
 //tikrinam kad ne bet kas uzeitu
 session_start();
-
+if(!isset($_SESSION['logged'])) {
+    header( 'Location: http://localhost/barsukas06/NamuDarbai/bankas12/login.php');
+    die;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,6 +15,7 @@ session_start();
     <title>Member Page</title>
 </head>
 <body>
-    
+      <?php include __DIR__ . '/menu.php' ?>
+      
 </body>
 </html>
