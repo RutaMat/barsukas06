@@ -1,5 +1,5 @@
 
-  
+
 <div>
 
 <a href="http://localhost/barsukas06/NamuDarbai/bankas12/">Home</a>
