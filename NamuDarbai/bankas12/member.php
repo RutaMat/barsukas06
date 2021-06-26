@@ -16,6 +16,7 @@ if(!isset($_SESSION['logged'])) {
     <title>Member Page</title>
 </head>
 <body>
+<?php include __DIR__ . '/msg.php' ?> 
       <?php include __DIR__ . '/menu.php' ?>
       
 </body>

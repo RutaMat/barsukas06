@@ -1,7 +1,7 @@
 <?php
 
 
-
+  
 
 ?>
 <!DOCTYPE html>
@@ -15,7 +15,7 @@
 <body>
     
     <?php include __DIR__ . '/menu.php' ?> 
-    <!-- <?php include __DIR__ . '/msg.php' ?>    -->
+    <?php include __DIR__ . '/msg.php' ?>   
     <h1>Sąskaitų sąrašas</h1>
     <a href="?action=naujaSaskaita">Pridėti naują sąskaitą</a><br><br>
 

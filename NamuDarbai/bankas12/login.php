@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 $_SESSION['logged'] = 1;
                 //jeigu user savo sesijoj logged tuomet tas user
                 $_SESSION['name'] = $vartotojas['name']; //tam kad pasisveikintu
+                
                 header('Location: http://localhost/barsukas06/NamuDarbai/bankas12/member.php');
                 die;
             }

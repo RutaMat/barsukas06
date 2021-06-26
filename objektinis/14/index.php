@@ -2,6 +2,7 @@
 
 // Programuotojas Petras
 
+
 require __DIR__ . '/Bebras.php';
 
 
@@ -17,7 +18,18 @@ echo '<pre>';
 // var_dump($bebras3);
 // echo '<br>';
 
-echo $bebras1->name;
+$bebras2->name = 'Bobikas';
+
+echo $bebras1->randomNumber(1000);
+
+// echo $bebras1->getAge();
+
+$bebras2->setAge(8);
+
+
+
+$bebras2->addYear();
+$bebras2->addYear();
 
 $bebras1->sayHello();
 $bebras2->sayHello();

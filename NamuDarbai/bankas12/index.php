@@ -9,6 +9,7 @@ function redirect() {
     die;
 }
 
+
 function redirectToAction($action, $id = 0) { //default 0
     if ($id) {
         header('Location:http://localhost/barsukas06/NamuDarbai/bankas12/?action='.$action.'&id='.$id);
@@ -18,23 +19,6 @@ function redirectToAction($action, $id = 0) { //default 0
     } 
     die;
 
-}
- // kitu atveju pasiimam msg.
-// pasiimam msg(tarpini) kad galetumem atvaizduoti ir
-// istrinam kad eiti prie kitu rezultatu, kad jo vis nerodytu naujose reiksmese
-function getMessage() {
-    
-    if(!isset($_SESSION['msg'])) {
-        return false;
-    }
-    $msg = $_SESSION['msg']; 
-   
-    unset($_SESSION['msg']);
-    return $msg;
-};
-
-function setMessage(string $msg) {
-    $_SESSION['msg'] = $msg;
 }
 
 
@@ -50,6 +34,7 @@ $sarasas = json_decode(   file_get_contents(__DIR__.'/sarasai.json')    , 1);
 // die;
 //1.saskaitu saraso atvaizdavimas get
 if (!isset($_GET['action']) && $_SERVER['REQUEST_METHOD'] == 'GET') {
+  
     require __DIR__.' /saskaituSarasas.php';
 }
 
