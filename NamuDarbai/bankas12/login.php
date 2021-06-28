@@ -1,10 +1,12 @@
 <?php
 session_start();
 
+require __DIR__ . '/msg.php';
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (isset($_GET['logout'])) {
         //  atjungia user
         unset($_SESSION['logged'], $_SESSION['name']);
+        setMessage('Sesija baigta!');
         header('Location: http://localhost/barsukas06/NamuDarbai/bankas12/login.php');
         die;
     }
@@ -20,10 +22,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 $_SESSION['logged'] = 1;
                 //jeigu user savo sesijoj logged tuomet tas user
                 $_SESSION['name'] = $vartotojas['name']; //tam kad pasisveikintu
+                setMessage('Sėkmingas prisijungimas! ');
                 
                 header('Location: http://localhost/barsukas06/NamuDarbai/bankas12/member.php');
                 die;
-            }
+            } 
+        } else {
+            setMessage('Neteisingi vartotojo duomenys! ');
+            header('Location: http://localhost/barsukas06/NamuDarbai/bankas12/login.php');
+            die;
         }
     }
 }

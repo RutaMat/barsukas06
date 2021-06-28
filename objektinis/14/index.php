@@ -4,13 +4,16 @@
 
 
 require __DIR__ . '/Bebras.php';
+require __DIR__ . '/UpinisBebras.php';
 
 
-$bebras1 = new Bebras;
-$bebras2 = new Bebras;
+$bebras1 = new UpinisBebras('Blue');
+$bebras2 = new UpinisBebras;
 $bebras3 = $bebras1;
 
-echo '<pre>';
+$bebras1->__A__(5);
+
+// echo '<pre>';
 // var_dump($bebras1);
 // echo '<br>';
 // var_dump($bebras2);
@@ -20,16 +23,17 @@ echo '<pre>';
 
 $bebras2->name = 'Bobikas';
 
-echo $bebras1->randomNumber(1000);
+// echo $bebras1->randomNumber(1000);
 
 // echo $bebras1->getAge();
 
-$bebras2->setAge(8);
+// $bebras2->setAge(8);
+// $bebras2->dfgfgfdgfdgfd = 20;
 
 
-
-$bebras2->addYear();
-$bebras2->addYear();
+// $bebras2->addYear();
+// $bebras2->addYear();
 
 $bebras1->sayHello();
 $bebras2->sayHello();
+© 2021 GitHub, Inc.

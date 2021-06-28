@@ -1,4 +1,5 @@
 <?php
+require __DIR__ . '/msg.php';
 $id = $_GET['id'] ?? 0;
 foreach ($sarasas as $index => $saskaita) {
         if ($saskaita['id'] == $id) {
