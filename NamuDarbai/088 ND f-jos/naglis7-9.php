@@ -28,7 +28,7 @@ function genegenerator( $times)
     }
     return $arr;
 }
- _dc($arr);
+ _d($arr);
 
 // 8.	Suskaičiuokite septinto uždavinio elementų, kurie nėra masyvai, sumą. 
 // Skaičiuoti reikia visuose masyvuose ir submasyvuose.

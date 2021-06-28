@@ -7,7 +7,7 @@ $id = $_GET['id'] ?? 0;
 // print_r ($sarasas);  //ar mato suma
 // die;
 
-
+require __DIR__ . '/msg.php';
 
 foreach ($sarasas as &$saskaita) {
     if ($saskaita['id'] == $id) {
