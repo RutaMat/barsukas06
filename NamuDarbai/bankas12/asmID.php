@@ -5,7 +5,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //   echo $_POST['asmensKodas'].'<br>';
       if(strlen($ak)!=11){
         //   echo "ilgis geras<br>";
-          setMessage('Per mazai. ');
+        setMessage('Per mažai skaitmenų ');    
+        redirectToAction('naujaSaskaita');
+       
       }
       else if(preg_match("/^[0-9]+$/", $ak)){
           echo "vien skaiciai<br>";
@@ -19,3 +21,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //   checkdate ( $month, $day, $year );
     //   die;
   }
+  

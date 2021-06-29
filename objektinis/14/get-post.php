@@ -1,6 +1,6 @@
 <?php
 print_r($_SERVER['REQUEST_METHOD'], 'METHOD:');
-// _d($_GET, 'GET:');
+_d($_GET, 'GET:');
 // _d($_POST, 'POST:');
 
 
