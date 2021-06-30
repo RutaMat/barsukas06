@@ -73,4 +73,3 @@ elseif ($_GET['action'] == 'naujaSaskaita' && $_SERVER['REQUEST_METHOD'] == 'POS
 elseif ($_GET['action'] == 'trynimas' && $_SERVER['REQUEST_METHOD'] == 'POST') {
     require __DIR__. '/postTrynimas.php';
 }
-

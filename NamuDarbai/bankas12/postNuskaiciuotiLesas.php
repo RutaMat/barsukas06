@@ -10,7 +10,7 @@ require __DIR__ . '/msg.php';
 foreach ($sarasas as &$saskaita) {
     if ($saskaita['id'] == $id) {
         
-        // Validation. Jeigu sask yra maziau agurku negu norime paimti
+        // Validation. Jeigu sask yra maziau  negu norime paimti
         if ($saskaita['suma'] < (int) $_POST['suma']) {
             setMessage('Trūksta lėšų.');
             redirectToAction('nuskaiciuotiLesas', $id); //griztam i nuskaiciuoti su tuo pat id kuriuo atejom

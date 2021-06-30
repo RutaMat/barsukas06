@@ -36,4 +36,3 @@ $bebras2->name = 'Bobikas';
 
 $bebras1->sayHello();
 $bebras2->sayHello();
-© 2021 GitHub, Inc.

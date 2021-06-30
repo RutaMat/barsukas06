@@ -1,25 +1,17 @@
 <?php
-// if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-//     $ak = $_POST['asmensKodas'];
-//       echo $_POST['asmensKodas'].'<br>';
-//       if(strlen($ak)==11){
-//           echo "ilgis geras<br>";
-//       }
-//       if(preg_match("/^[0-9]+$/", $ak)){
-//           echo "vien skaiciai<br>";
-//       }
-//       if(substr($ak, 0,1) > 0 && substr($ak, 0,1) < 7 ){
-//           echo "skaicius tarp 0 ir 7";
-//       }
-//       if(substr($ak, 1,3) <7 ){
-//           echo "skaicius tarp 0 ir 7";
-//       }
-    //   checkdate ( $month, $day, $year );
-    //   die;
-//   }
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-$iban = "628419848624";
-}
+// if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    
+// $saskaitosNr1 = 'LT01';
+// foreach(range(1,16) as $value) {
+//     $value = rand(0, 9);
+    
+// }
+// $_POST['saskaitosNr'] = array_merge($saskaitosNr1, $value);
+// }
+
+// if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+// $iban = "LT";
+// }
 ?>
 
 <!DOCTYPE html>
