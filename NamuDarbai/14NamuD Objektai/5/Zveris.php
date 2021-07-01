@@ -10,9 +10,13 @@ class Zveris extends Miskas {
 
 
     protected function papasakok(){
-        parent::__construct();
-        echo "Aš esu žvėris vardu $this->name .<br> get_parent_class($this) ";
-       
+
+        
+        echo "Aš esu žvėris vardu ".$this->name.".<br>  ";
+       parent::papasakok();
+    }
+    public function sek() {
+        $this->papasakok();
     }
 
 }
