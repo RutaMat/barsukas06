@@ -11,7 +11,7 @@ class Miskas {
         return $this->name;
     }
     protected function papasakok() {
-        echo "<h2> Aš gyvenu miške pavadintame .$name. , o kur tu?</h2><br>";
+        echo "<h2> Aš gyvenu miške pavadintame " .$this->name. " , o kur tu?</h2><br>";
         
     }
     
