@@ -16,3 +16,20 @@
     </form> -->
 
     
+    if (strlen($_POST['vardas']) >= 3 || strlen($_POST['pavarde'] >= 3)) {
+    
+    if(strlen($_POST['asmensKodas'] == 11)){
+
+
+$sarasas [] = $saskaita;
+file_put_contents(__DIR__.'/sarasai.json', json_encode($sarasas));
+setMessage('Nauja saskaita paruosta');
+redirect();
+    } else {
+    setMessage('Neteisingas asmens kodas ');
+    redirectToAction('naujaSaskaita');
+    }
+
+} else { 
+    setMessage('Mažiau negu trys raidės varde arba pavardėje. ');
+    redirectToAction('naujaSaskaita'); }
