@@ -1,18 +1,8 @@
 <?php
-// if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    
-// $saskaitosNr1 = 'LT01';
-// foreach(range(1,16) as $value) {
-//     $value = rand(0, 9);
-    
-// }
-// $_POST['saskaitosNr'] = array_merge($saskaitosNr1, $value);
-// }
 
-// if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-// $iban = "LT";
-// }
+$iban = 'LT01 '.rand(1000, 9999). ' '.rand(0000, 9999). ' '.rand(0000, 9999). ' '.rand(0000, 9999);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +26,7 @@
         <label for="asmensKodas"> Asmens kodas: </label>
         <input type="text" name="asmensKodas" ><br><br>
         <label for="saskaitosNr"> Sąskaitos numeris: </label>
-        <input type="text" name="saskaitosNr" ><br><br>
+        <input type="text" name="saskaitosNr" value="<?=$iban?>" readonly><br><br>
         <label for="suma"> Sąskaitos likutis: </label>
         <input type="text" name="suma" ><br><br>
         
