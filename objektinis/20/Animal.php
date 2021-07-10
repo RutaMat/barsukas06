@@ -7,9 +7,9 @@ class Animal extends Australia {
 
     public static $hello = 'hello from Lithuania';
 
-    // public static function sayUUID()
-    // {
-    //     echo Uuid::uuid4();
-    // }
+    public static function sayUUID()
+    {
+        // Uuid::uuid4();
+    }
     
 }

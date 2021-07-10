@@ -4,15 +4,18 @@ $saskaita = ['id' => rand(1, 100), 'suma' => 0, 'vardas' => $_POST['vardas'], 'p
 
 require __DIR__ . '/msg.php';
 // require __DIR__ . '/asmID.php';
-if (!empty($_POST['vardas']) && !empty($_POST['pavarde']) && !empty($_POST['asmensKodas']) && !empty($_POST['saskaitosNr'])) {
+if (!empty($_POST['vardas']) && !empty($_POST['pavarde']) && !empty($_POST['asmensKodas'])) {
   
 
 
-    if (strlen($_POST['vardas']) >= 3 || strlen($_POST['pavarde'] >= 3)) {
+    if (strlen($_POST['vardas']) >= 3 && strlen($_POST['pavarde']) >= 3) {
     
-        if(strlen($_POST['asmensKodas'] == 11)){
+        if(strlen($_POST['asmensKodas']) == 11){
 
-    
+            $sarasas[] = $saskaita;
+            file_put_contents(__DIR__.'/sarasai.json', json_encode($sarasas));
+            setMessage('Nauja saskaita paruosta');
+            redirect();
 
         } else {
         setMessage('Neteisingas asmens kodas ');
@@ -27,10 +30,7 @@ if (!empty($_POST['vardas']) && !empty($_POST['pavarde']) && !empty($_POST['asme
       setMessage('Užpildyti visus langelius. ');
       redirectToAction('naujaSaskaita'); 
 }
-// if (empty($_POST['vardas']) || empty($_POST['pavarde']) || empty($_POST['asmensKodas']) || empty($_POST['saskaitosNr'])) {
-  
-//     setMessage('Užpildyti visus langelius. ');
-//     redirectToAction('naujaSaskaita');
+//neveikia foreach 
 
 foreach ($sarasas as $saskaita) {
 
@@ -39,7 +39,7 @@ foreach ($sarasas as $saskaita) {
             
             setMessage('Toks asmens kodas yra. ');
             redirectToAction('naujaSaskaita');
-    }
+    } 
 
 }
 
