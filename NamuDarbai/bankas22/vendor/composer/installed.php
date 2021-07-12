@@ -5,18 +5,18 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '416202d38e415afa6c44ba026933e1ecc2cb1dc0',
-        'name' => 'airune/20',
+        'reference' => 'c8a5a3c3c1155c8c137a34c16526b57faebbe4a6',
+        'name' => 'airune/bankas22',
         'dev' => true,
     ),
     'versions' => array(
-        'airune/20' => array(
+        'airune/bankas22' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '416202d38e415afa6c44ba026933e1ecc2cb1dc0',
+            'reference' => 'c8a5a3c3c1155c8c137a34c16526b57faebbe4a6',
             'dev_requirement' => false,
         ),
     ),
