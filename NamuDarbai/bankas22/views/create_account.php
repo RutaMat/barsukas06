@@ -1,4 +1,8 @@
-<form action="?action=naujaSaskaita" method="post">
+<?php require DIR.'views/top.php' ?>
+<?php require DIR.'views/msg.php' ?>
+<h2> Užpildyti naują sąskaitą</h2>
+
+    <form action="<?= URL ?>create-account" method="post">
         <label for="vardas"> Vardas: </label>
         <input type="text" name="vardas"> <br><br>
         <label for="pavarde"> Pavardė: </label>
@@ -10,5 +14,8 @@
         <label for="suma"> Sąskaitos likutis: </label>
         <input type="text" name="suma" ><br><br>
         
-        <button>Patvirtinti sąskaitos duomenis</button>
+        <button type="submit">Patvirtinti sąskaitos duomenis</button><br><br>
     </form>
+    <a href="<?= URL ?>">Grįžti į sąskaitų sąrašą</a>
+<?php require DIR.'views/bottom.php' ?>
+

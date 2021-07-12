@@ -6,35 +6,30 @@ class Json implements DataBase {
 
     private $data;
     private static $obj;
-    
-    public static function getJson()
+
+    public static function getJson() 
     {
         return self::$obj ?? self::$obj = new self;
     }
-    
-    private function __construct()
+    private function __construct ()
     {
-        if (!file_exists(DIR.'/boxes.json')) {
-            file_put_contents(DIR.'/boxes.json', json_encode([]));
-        }
-        $this->data = json_decode( file_get_contents(DIR.'/boxes.json'), 1);
+    if (!(file_exists(DIR.'/boxes.json'))) {
+    file_put_contents(DIR.'/boxes.json', json_encode([]));
+    }
+    $this->data = json_decode(file_get_contents(DIR.'/boxes.json'), 1);
     }
 
-    public function __destruct()
+    public function __destruct ()
     {
-        file_put_contents(DIR.'/boxes.json', json_encode($this->data));
-    }
-    
-    
-    // box ['id' => 25, 'amount' => 258]
-    
-    
-    public function create(array $boxData) : void
-    {
-        $this->data[] = $boxData;
+    file_put_contents(DIR.'/boxes.json', json_encode($this->data));
     }
 
-    public function update(int $boxId, array $boxData) : void
+    public function create(array $boxData) : void 
+    {
+        $this->data [] = $boxData;
+    }
+
+    public function update(int $boxId, array $boxData) : void 
     {
         foreach ($this->data as $index => $box) {
             if ($box['id'] == $boxId) {
@@ -42,9 +37,9 @@ class Json implements DataBase {
                 return;
             }
         }
-    } 
+    }
 
-    public function delete(int $boxId) : void
+    public function delete(int $boxId) : void 
     {
         foreach ($this->data as $index => $box) {
             if ($box['id'] == $boxId) {
@@ -52,18 +47,18 @@ class Json implements DataBase {
                 return;
             }
         }
-    } 
+    }
 
-    public function show(int $boxId) : array
+    public function show(int $boxId) : array 
     {
         foreach ($this->data as $index => $box) {
             if ($box['id'] == $boxId) {
                 return $this->data[$index];
             }
         }
-    } 
+    }
 
-    public function showAll() : array
+    public function showAll() : array 
     {
         return $this->data;
     }
