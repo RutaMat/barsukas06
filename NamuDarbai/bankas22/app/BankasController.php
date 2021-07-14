@@ -28,7 +28,7 @@ class BankasController {
 
         
         $saskaita ['suma'] += (int)$_POST['suma'];
-        // App::setMessage(' Sąskaita papildyta ' .$_POST['suma']. ' Eur!');
+        App::setMessage(' Sąskaita papildyta ' .$_POST['suma']. ' Eur!');
 
         Json::getJson()->update($id, $saskaita);
         App::redirect();
@@ -79,12 +79,12 @@ class BankasController {
 
 
 
-        if(($_SERVER['REQUEST_METHOD'] == 'POST') && empty($_POST['vardas'])){
-            App::setMessage("Įrašyti vardą");
+        if(($_SERVER['REQUEST_METHOD'] == 'POST') && empty($_POST['vardas']) || empty($_POST['pavarde'])||empty($_POST['asmensKodas'])){
+            App::setMessage("Užpildyti tuščius langelius");
             App::redirect('create-account');
                  
             }
-            if(isset($_POST['name']) && strlen($_POST['name']) < 3){
+            if(isset($_POST['vardas']) && strlen($_POST['vardas']) < 3){
             App::setMessage("Vardas sudarytas daugiau negu 3 simboliai");
             App::redirect('create-account');
               
@@ -99,32 +99,24 @@ class BankasController {
             App::redirect('create-account');
     
             }
+            $accounts = Json::getJson()->showAll();
+            $saskaita = Json::getJson()->show();
+            foreach ($accounts as $saskaita) {
 
+                if ($_POST['asmensKodas'] == $saskaita['asmensKodas']) {
+                    
+                        
+                        App::setMessage('Toks asmens kodas yra. ');
+                        App::redirect('create-account');
+                } 
+            
+            }
+            
 
         Json::getJson()->create($saskaita);
         App::redirect();
         
     }
-    public function aprooval($id) {
-        if(($_SERVER['REQUEST_METHOD'] == 'POST') && empty($_POST['vardas'])){
-        App::setMessage("Įrašyti vardą");
-        App::redirect();
-             
-        }
-        if(isset($_POST['name']) && strlen($_POST['name']) < 3){
-        App::setMessage("Vardas sudarytas daugiau negu 3 simboliai");
-        App::redirect();
-          
-        }
-        if(isset($_POST['pavarde']) && strlen($_POST['pavarde']) < 3){
-        App::setMessage("Pavardė sudaryta daugiau negu 3 simboliai");
-        App::redirect();
-        
-        }
-        if(isset($_POST['asmensKodas']) && (strlen($_POST['asmensKodas']) != 11)) {
-        App::setMessage("Neteisingas asmens kodas");
-        App::redirect();
-
-        }
-    }
+    
+    
 }
