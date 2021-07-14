@@ -38,9 +38,15 @@ public static function setMessage(string $msg)
 
     private static function router()
     {  
-        //  $uri = $_SERVER['REQUEST_URI'];
-        $uri = str_replace(INSTALL_DIR, '', $_SERVER['REQUEST_URI']);
+        
+        // $uri = str_replace(INSTALL_DIR, '', $_SERVER['REQUEST_URI']);
+        $uri = $_SERVER['REQUEST_URI'];
         $uri = explode('/', $uri);
+        array_shift($uri);
+
+
+        
+        
 
         if ('create-account' == $uri[0]) {
             if ('GET' == $_SERVER['REQUEST_METHOD']) {
