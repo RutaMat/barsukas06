@@ -49,29 +49,11 @@ WHERE (`type` = 2 AND height > 10) OR (`type` = 1 AND height < 10) OR `type` = 3
 ORDER BY `name` DESC
 -- LIMIT 5
 ";
-$stmt = $pdo->query($sql); // DB steitmentas
-while ($row = $stmt->fetch()) // duok man viena eilute
+//cia kalba apie tai kad grąžina paziureti
+$stmt = $pdo->query($sql); // DB steitmentas-dumenu bazes pareiskimas stmt
+while ($row = $stmt->fetch()) // duok man viena eilute fetc-grazina po eilute nuo1mos iki 
 {
     echo $row['id'].' '.$row['name'].' '.$row['height'].' '.$row['type'].'<br>';
+    //kreipiuosi uzklausa, atgal gaunu statment tada ciklas ir fechinamas ir toje eiluteje duomenys irasyti asociatyviam masyve
 }
-
-//Redagavimas
-// UPDATE table_name
-// SET column1=value, column2=value2,...
-// WHERE some_column=some_value 
-$sql = "UPDATE trees
-SET height = 2.20, `name` = 'Mažas Beržas'
-WHERE `name` = 'Beržas'
-";
-$pdo->query($sql);
-
-
-//Trynimas
-// DELETE FROM table_name
-// WHERE some_column = some_value
-$sql = "DELETE FROM trees
-WHERE id = 29 OR 1
-";
-
-// $pdo->query($sql);
 
