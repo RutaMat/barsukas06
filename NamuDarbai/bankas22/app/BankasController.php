@@ -38,9 +38,6 @@ class BankasController {
     {
         $id = (int) $id;
         $saskaita = self::getData()->show($id);
-
-
-        
         $saskaita ['suma'] += (int)$_POST['suma'];
         App::setMessage(' Sąskaita papildyta ' .$_POST['suma']. ' Eur!');
 
@@ -57,17 +54,21 @@ class BankasController {
     {
         $id = (int) $id;
         $accounts = self::getData()->showAll();
-        $saskaita = self::getData()->show($id);
+        //$saskaita = self::getData()->show($id);
         
-        foreach ($accounts as &$saskaita) {
+        foreach ($accounts as $saskaita) {
             if ($saskaita['id'] == $id) {
-                $saskaita ['suma'] -= (int)$_POST['suma'];
+                
+                // echo  $saskaita ['suma']; echo "<br>";
+                // echo $_POST['suma']; 
+                // die;
                 // Validation. Jeigu sask yra maziau  negu norime paimti
                 if ($saskaita['suma'] < (int) $_POST['suma']) {
                     App::setMessage('Trūksta lėšų.');
                     App::redirect(); 
                 }}}
-
+                $saskaita ['suma'] -= (int)$_POST['suma'];
+                App::setMessage(' Iš sąskaitos nuskaičiuota ' .$_POST['suma']. ' Eur!');
                 self::getData()->update($id, $saskaita);
         App::redirect();
     }
@@ -88,31 +89,32 @@ class BankasController {
     public function save()
     {
 
-        //setMessage("Sąskaita sėkmingai sukurta.");
-        $saskaita = ['id' => rand(1, 100), 'vardas' => $_POST['vardas'], 'pavarde' => $_POST['pavarde'], 'asmensKodas' => $_POST['asmensKodas'],  'saskaitosNr' => $_POST['saskaitosNr'], 'suma' =>  $_POST['suma']];
+        App::setMessage("Sąskaita sėkmingai sukurta!");
+        $saskaita = ['id' => rand(1, 100), 'vardas' => $_POST['vardas'], 'pavarde' => $_POST['pavarde'], 'asmensKodas' => $_POST['asmensKodas'],  'saskaitosNr' => $_POST['saskaitosNr'], 'suma' => $_POST['suma']];
 
 
 
         if(($_SERVER['REQUEST_METHOD'] == 'POST') && empty($_POST['vardas']) || empty($_POST['pavarde'])||empty($_POST['asmensKodas'])){
-            App::setMessage("Užpildyti tuščius langelius");
+            App::setMessage("Užpildyti tuščius langelius!");
             App::redirect('create-account');
                  
             }
             if(isset($_POST['vardas']) && strlen($_POST['vardas']) < 3){
-            App::setMessage("Vardas sudarytas daugiau negu 3 simboliai");
+            App::setMessage("Vardas sudarytas iš daugiau negu 3-jų raidžių!");
             App::redirect('create-account');
               
             }
             if(isset($_POST['pavarde']) && strlen($_POST['pavarde']) < 3){
-            App::setMessage("Pavardė sudaryta daugiau negu 3 simboliai");
+            App::setMessage("Pavardė sudaryta iš daugiau negu 3-jų raidžių!");
             App::redirect('create-account');
             
             }
             if(isset($_POST['asmensKodas']) && (strlen($_POST['asmensKodas']) != 11)) {
-            App::setMessage("Neteisingas asmens kodas");
+            App::setMessage("Neteisingas asmens kodas!");
             App::redirect('create-account');
     
             }
+
             // $accounts = self::getData()->showAll();
             // // $saskaita = self::getData()->show();
             // foreach ($accounts as $saskaita) {

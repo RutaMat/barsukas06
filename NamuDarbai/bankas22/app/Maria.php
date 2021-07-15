@@ -38,13 +38,12 @@ class Maria implements DataBase {
 
     public function create(array $userData) : void
     {
-      
-        print_r($userData);
         $sql =
         "INSERT INTO sąskaitos (`id`, `vardas`, `pavarde`, `asmensKodas`, `saskaitosNr`, `suma` )
-        VALUES (`$userData[id]`, `$userData[vardas]`, `$userData[pavarde]`, `$userData[asmensKodas]`, `$userData[saskaitosNr]`, `$userData[suma]`  )";
+        VALUES('".$userData['id']."', '".$userData['vardas']."', '".$userData['pavarde']."', 
+            '".$userData['asmensKodas']."', '".$userData['saskaitosNr']."', '".$userData['suma']."')";
         $this->pdo->query($sql);
-
+ 
     }
  
     public function update(int $userId, array $userData) : void
@@ -94,19 +93,19 @@ class Maria implements DataBase {
     }
 
 
-    // public function getUser(string $name, string $pass) : array
-    // {
-    //     $sql = 
-    //     "SELECT *
-    //     FROM sąskaitos
-    //     WHERE name = ? AND pass = ?
-    //     ";
+    public function getUser(string $name, string $pass) : array
+    {
+        $sql = 
+        "SELECT *
+        FROM users
+        WHERE name = ? AND pass = ?
+        ";
 
-    //     $stmt = $this->pdo->prepare($sql);
-    //     $stmt->execute([$name, $pass]);
-    //     $user = $stmt->fetch();
-    //     return false === $user ? [] : $user;
-    // }
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute([$name, $pass]);
+        $user = $stmt->fetch();
+        return false === $user ? [] : $user;
+    }
 
     public function getCount(int $suma) : bool
     {
