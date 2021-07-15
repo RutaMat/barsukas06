@@ -21,6 +21,13 @@ class App {
     header('Location:' . URL . $path);
     die;
 }
+//nedarys nieko jei prisijunge, jei neasam ismes i prisijungimo psl
+public static function checkLogin() {
+    if (!isset($_SESSION['logged'])) {
+    self::redirect('login');
+}
+
+}
 public static function getMessage()
 {
     if (!isset($_SESSION['message'])) {
@@ -44,12 +51,23 @@ public static function setMessage(string $msg)
         $uri = explode('/', $uri);
         array_shift($uri);
         
-        echo $uri[0];
+        if ('login' == $uri[0]) {
+            if ('GET' == $_SERVER['REQUEST_METHOD']) {
+                return (new LoginController)->showLogin();
+            }
+            else {
+                return (new LoginController)->doLogin();
+            }
+        }
+        if ('logout' == $uri[0]) {
+            unset($_SESSION['logged'], $_SESSION['name']);
+            self::redirect('login');
+        }
 
-        
-        
 
         if ('create-account' == $uri[0]) {
+            //apgina loginu linkus
+            self::checkLogin();
             if ('GET' == $_SERVER['REQUEST_METHOD']) {
                 return (new BankasController)->create();
             }
@@ -59,6 +77,7 @@ public static function setMessage(string $msg)
         }
 
         if ('add' == $uri[0] && isset($uri[1])) {
+            self::checkLogin();
             if ('GET' == $_SERVER['REQUEST_METHOD']) {
                 return (new BankasController)->add($uri[1]);
             }
@@ -67,6 +86,7 @@ public static function setMessage(string $msg)
             }
         }
         if ('rem' == $uri[0] && isset($uri[1])) {
+            self::checkLogin();
             if ('GET' == $_SERVER['REQUEST_METHOD']) {
                 return (new BankasController)->remove($uri[1]);
             }
@@ -75,7 +95,8 @@ public static function setMessage(string $msg)
             }
         }
         if ('delete' == $uri[0] && isset($uri[1]) && 'POST' == $_SERVER['REQUEST_METHOD']) {
-                return (new BankasController)->delete($uri[1]);
+            self::checkLogin();   
+            return (new BankasController)->delete($uri[1]);
         }
 
         if ($uri[0] == 'testas' && isset($uri[1])) {

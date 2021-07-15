@@ -10,7 +10,7 @@
         <label for="asmensKodas"> Asmens kodas: </label>
         <input type="text" name="asmensKodas" ><br><br>
         <label for="saskaitosNr"> Sąskaitos numeris: </label>
-        <input type="text" name="saskaitosNr" value="<?=$iban?>" readonly><br><br>
+        <input type="text" name="saskaitosNr" value="<?=$iban?>" ><br><br>
         <label for="suma"> Sąskaitos likutis: </label>
         <input type="text" name="suma" ><br><br>
         
