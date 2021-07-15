@@ -1,8 +1,21 @@
 <?php
 namespace Bank;
 
-
 class AgurkaiController {
+
+    // private static $dbType = 'json';
+    private static $dbType = 'maria';
+    
+    public static function getData()
+    {
+        if (self::$dbType == 'json') {
+            return Json::getJson();
+        }
+        if (self::$dbType == 'maria') {
+            return Maria::getMaria();
+        }
+    }
+
 
     public function agurkuTest($wahatToSay)
     {
@@ -12,7 +25,12 @@ class AgurkaiController {
 
     public function index()
     {
-        return App::view('index', ['boxes' => Json::getJson()->showAll()]);
+        $boxes = self::getData()->showAll();
+
+        usort($boxes, fn ($a, $b) => $b['amount'] <=> $a['amount']);
+
+
+        return App::view('index', ['boxes' => $boxes]);
     }
 
     public function add($id)
@@ -23,9 +41,12 @@ class AgurkaiController {
     public function doAdd($id)
     {
         $id = (int) $id;
-        $box = Json::getJson()->show($id);
-        $box ['amount'] += (int)$_POST['amount'];
-        Json::getJson()->update($id, $box);
+        $kiek = (int) $_POST['amount'];
+        if (self::getData()->getCount($kiek)) {
+            $box = self::getData()->show($id);
+            $box['amount'] += (int) $_POST['amount'];
+            self::getData()->update($id, $box);
+        }
         App::redirect();
     }
 
@@ -37,17 +58,16 @@ class AgurkaiController {
     public function doRemove($id)
     {
         $id = (int) $id;
-        $box = Json::getJson()->show($id);
-        $box ['amount'] -= (int)$_POST['amount'];
-        Json::getJson()->update($id, $box);
+        $box = self::getData()->show($id);
+        $box['amount'] -= (int) $_POST['amount'];
+        self::getData()->update($id, $box);
         App::redirect();
     }
 
     public function delete($id)
     {
-        Json::getJson()->delete($id);
+        self::getData()->delete($id);
         App::redirect();
-
     }
 
 
@@ -55,10 +75,13 @@ class AgurkaiController {
     {
         return App::view('create_box');
     }
+
     public function save()
     {
-        $box = ['id' => rand(10000000, 99999999), 'amount' => 0];
-        Json::getJson()->create($box);
+        $box = ['id' => rand(10000000, 99999999), 'amount' => 0]; // be garantiju unikalumui
+        self::getData()->create($box);
         App::redirect();
     }
+
+
 }

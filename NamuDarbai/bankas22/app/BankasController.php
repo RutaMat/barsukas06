@@ -4,33 +4,47 @@ namespace Bank;
 
 class BankasController {
 
-    // public function agurkuTest($wahatToSay)
-    // {
-    //     $labas = 'Hello, little One';
-    //     return App::view('test', compact('wahatToSay', 'labas'));
-    // }
+    public function bankoTest($wahatToSay)
+    {
+        $labas = 'Hello, little One';
+        return App::view('test', compact('wahatToSay', 'labas'));
+    }
+
+    // private static $dbType = 'json';
+    private static $dbType = 'maria';
+    
+    public static function getData()
+    {
+        if (self::$dbType == 'json') {
+            return Json::getJson();
+        }
+        if (self::$dbType == 'maria') {
+            return Maria::getMaria();
+        }
+    }
+
 
     public function index()
     {
-        return App::view('index', ['accounts' => Json::getJson()->showAll()]);
+        return App::view('index', ['accounts' => self::getData()->showAll()]);
     }
 
     public function add($id)
     {
-        return App::view('add', ['id' => $id, 'user' =>Json::getJson()->show($id)]);
+        return App::view('add', ['id' => $id]);
     }
 
     public function doAdd($id)
     {
         $id = (int) $id;
-        $saskaita = Json::getJson()->show($id);
+        $saskaita = self::getData()->show($id);
 
 
         
         $saskaita ['suma'] += (int)$_POST['suma'];
         App::setMessage(' Sąskaita papildyta ' .$_POST['suma']. ' Eur!');
 
-        Json::getJson()->update($id, $saskaita);
+        self::getData()->update($id, $saskaita);
         App::redirect();
     }
 
@@ -42,8 +56,8 @@ class BankasController {
     public function doRemove($id)
     {
         $id = (int) $id;
-        $accounts = Json::getJson()->showAll();
-        $saskaita = Json::getJson()->show($id);
+        $accounts = self::getData()->showAll();
+        $saskaita = self::getData()->show($id);
         
         foreach ($accounts as &$saskaita) {
             if ($saskaita['id'] == $id) {
@@ -54,13 +68,13 @@ class BankasController {
                     App::redirect(); 
                 }}}
 
-        Json::getJson()->update($id, $saskaita);
+                self::getData()->update($id, $saskaita);
         App::redirect();
     }
 
     public function delete($id)
     {
-        Json::getJson()->delete($id);
+        self::getData()->delete($id);
         App::redirect();
 
     }
@@ -75,7 +89,7 @@ class BankasController {
     {
 
         //setMessage("Sąskaita sėkmingai sukurta.");
-        $saskaita = ['id' => rand(1, 100), 'suma' => 0, 'vardas' => $_POST['vardas'], 'pavarde' => $_POST['pavarde'], 'asmensKodas' => $_POST['asmensKodas'],  'saskaitosNr' => $_POST['saskaitosNr'], 'likutis' => $_POST['suma']];
+        $saskaita = ['id' => rand(1, 100), 'vardas' => $_POST['vardas'], 'pavarde' => $_POST['pavarde'], 'asmensKodas' => $_POST['asmensKodas'],  'saskaitosNr' => $_POST['saskaitosNr'], 'suma' =>  $_POST['suma']];
 
 
 
@@ -99,21 +113,21 @@ class BankasController {
             App::redirect('create-account');
     
             }
-            $accounts = Json::getJson()->showAll();
-            $saskaita = Json::getJson()->show();
-            foreach ($accounts as $saskaita) {
+            // $accounts = self::getData()->showAll();
+            // // $saskaita = self::getData()->show();
+            // foreach ($accounts as $saskaita) {
 
-                if ($_POST['asmensKodas'] == $saskaita['asmensKodas']) {
+            //     // if ($_POST['asmensKodas'] == $saskaita['asmensKodas']) {
                     
                         
-                        App::setMessage('Toks asmens kodas yra. ');
-                        App::redirect('create-account');
-                } 
+            //     //         App::setMessage('Toks asmens kodas yra. ');
+            //     //         App::redirect('create-account');
+            //     // } 
             
-            }
+            // }
             
 
-        Json::getJson()->create($saskaita);
+        self::getData()->create($saskaita);
         App::redirect();
         
     }
