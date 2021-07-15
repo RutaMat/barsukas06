@@ -38,12 +38,13 @@ public static function setMessage(string $msg)
 
     private static function router()
     {  
-        
-        // $uri = str_replace(INSTALL_DIR, '', $_SERVER['REQUEST_URI']);
+       
+        $uri = str_replace(INSTALL_DIR, '', $_SERVER['REQUEST_URI']);
         $uri = $_SERVER['REQUEST_URI'];
         $uri = explode('/', $uri);
         array_shift($uri);
-
+        
+        echo $uri[0];
 
         
         
@@ -77,9 +78,9 @@ public static function setMessage(string $msg)
                 return (new BankasController)->delete($uri[1]);
         }
 
-        // if ($uri[0] == 'testas' && isset($uri[1])) {
-        //     return (new BankasController)->bankoTest($uri[1]);
-        // }
+        if ($uri[0] == 'testas' && isset($uri[1])) {
+            return (new BankasController)->bankoTest($uri[1]);
+        }
         if ($uri[0] === '' && count($uri) === 1) {
             return (new BankasController)->index();
         }
